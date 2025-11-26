@@ -44,6 +44,38 @@ namespace Address_Book_System
             Console.WriteLine("Contact Added Successfully!");
         }
 
-        
+        // UC3 – Edit Contact
+        public void EditContact(string name)
+        {
+            Contact contact = contacts.FirstOrDefault(c => c.FirstName.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+            if (contact == null)
+            {
+                Console.WriteLine("Contact Not Found!");
+                return;
+            }
+
+            Console.Write("Enter New Address: ");
+            contact.Address = Console.ReadLine();
+
+            Console.Write("Enter New City: ");
+            contact.City = Console.ReadLine();
+
+            Console.Write("Enter New State: ");
+            contact.State = Console.ReadLine();
+
+            Console.Write("Enter New Zip: ");
+            contact.Zip = Console.ReadLine();
+
+            Console.Write("Enter New Phone Number: ");
+            contact.PhoneNumber = Console.ReadLine();
+
+            Console.Write("Enter New Email: ");
+            contact.Email = Console.ReadLine();
+
+            Console.WriteLine("Contact Updated Successfully!");
+        }
+
+
     }
 }
