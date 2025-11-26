@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Address-Book-System": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

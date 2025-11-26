@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "8nUAuKyQVOs=",
+  "success": true,
+  "projectFilePath": "E:\\.Net programming\\Address-Book-System\\Address-Book-System\\Address-Book-System.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sujatha\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.23.0\\microsoft.visualstudio.azure.containers.tools.targets.1.23.0.nupkg.sha512"
+  ],
+  "logs": []
+}
