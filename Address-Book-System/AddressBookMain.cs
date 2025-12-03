@@ -21,7 +21,8 @@ namespace Address_Book_System
                 Console.WriteLine("3. Edit Contact");
                 Console.WriteLine("4. Delete Contact");
                 Console.WriteLine("5. Show Contacts");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. WORK WITH DATA");
+                Console.WriteLine("7. Exit");
                 Console.Write("Enter Choice: ");
 
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -31,7 +32,8 @@ namespace Address_Book_System
                     case 1:
                         Console.Write("Enter Address Book Name: ");
                         string bookName = Console.ReadLine();
-                        addressBooks[bookName] = new AddressBookService();
+                        AddressBookService service = new AddressBookService();
+                        addressBooks.Add(bookName, service);
                         Console.WriteLine("New Address Book Created!");
                         break;
 
@@ -81,7 +83,69 @@ namespace Address_Book_System
                             Console.WriteLine("Address Book Not Found!");
                         break;
 
+
                     case 6:
+                        Console.Write("Enter Address Book Name: ");
+                        string b5 = Console.ReadLine();
+
+                        if (!addressBooks.ContainsKey(b5))
+                        {
+                            Console.WriteLine("Address Book Not Found!");
+                            break;
+                        }
+
+                        AddressBookService currentBook = addressBooks[b5];
+
+
+                        while (true)
+                        {
+                            Console.WriteLine("1. Show Contacts Sorted");
+                            Console.WriteLine("2. Show Contacts STARTSWITH");
+                            Console.WriteLine("3. Show Contacts FROM THE STATE");
+                            Console.WriteLine("4. EXIT");
+
+                            int datachoice = Convert.ToInt32(Console.ReadLine());
+                            switch (datachoice)
+                            {
+                                case 1:
+
+                                    List<Contact> sortedList = currentBook.SortedBasedName();
+
+                                    foreach (Contact con in sortedList)
+                                    {
+                                        Console.WriteLine(con);
+                                    }
+                                    break;
+
+                                case 2:
+                                    Console.Write("Enter Starting Letters: ");
+                                    string first = Console.ReadLine();
+                                    List<Contact> startsWithList = currentBook.NameStartWith(first);
+                                    foreach (Contact con in startsWithList)
+                                    {
+                                        Console.WriteLine(con);
+                                    }
+                                    break;
+                                case 3:
+                                    Console.Write("Enter State Name: ");
+                                    string stateName = Console.ReadLine();
+                                    List<Contact> fromStateList = currentBook.FromSameState(stateName);
+                                    foreach (Contact con in fromStateList)
+                                    {
+                                        Console.WriteLine(con);
+                                    }
+                                    break;
+
+                                case 4:
+                                    return;
+
+                                default:
+                                    Console.WriteLine("Invalid Option!");
+                                    break;
+                            }
+                        }
+
+                    case 7:
                         return;
 
                     default:
