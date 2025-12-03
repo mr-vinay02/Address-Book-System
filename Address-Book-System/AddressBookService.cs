@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
 
 namespace Address_Book_System
 {
-    internal class AddressBook_
+    internal class AddressBookService
     {
 
         private List<Contact> contacts = new List<Contact>();
+
+        
+        
 
         // UC2 – Add Contact
         public void AddContact()
@@ -34,11 +39,34 @@ namespace Address_Book_System
             Console.Write("Enter Zip: ");
             c.Zip = Console.ReadLine();
 
-            Console.Write("Enter Phone Number: ");
-            c.PhoneNumber = Console.ReadLine();
+            while (true)
+            {
+                Console.Write("Enter Phone Number: ");
+                c.PhoneNumber = Console.ReadLine();
 
-            Console.Write("Enter Email: ");
-            c.Email = Console.ReadLine();
+                if (!MobileNumber(c.PhoneNumber))
+                {
+                    Console.WriteLine("Please enter a valid 10-digit Mobile Number.");
+                }
+                else
+                {
+                    break; // valid -> exit loop
+                }
+            }
+
+            bool isEmailValid = false;
+            while (true)
+            {
+                Console.Write("Enter Email: ");
+                c.Email = Console.ReadLine();
+                if ( isEmailValid = !EmailValid(c.Email))
+                {
+                    Console.WriteLine("Email not in the proper format");
+                    Console.WriteLine("Please enter valid email");
+                }
+                if (!isEmailValid)
+                    break;
+            }
 
             contacts.Add(c);
             Console.WriteLine("Contact Added Successfully!");
@@ -67,11 +95,34 @@ namespace Address_Book_System
             Console.Write("Enter New Zip: ");
             contact.Zip = Console.ReadLine();
 
-            Console.Write("Enter New Phone Number: ");
-            contact.PhoneNumber = Console.ReadLine();
+            while (true)
+            {
 
-            Console.Write("Enter New Email: ");
-            contact.Email = Console.ReadLine();
+                Console.Write("Enter Phone Number: ");
+                contact.PhoneNumber = Console.ReadLine();
+
+
+                if (!MobileNumber(contact.PhoneNumber))
+                {
+                    Console.WriteLine("Please enter correct Mobile Number");
+                }
+                else
+                    break;
+            }
+
+            bool isEmailValid = false;
+            while (true)
+            {
+                Console.Write("Enter Email: ");
+                contact.Email = Console.ReadLine();
+                if (isEmailValid = !EmailValid(contact.Email))
+                {
+                    Console.WriteLine("Email not in the proper format");
+                    Console.WriteLine("Please enter valid email");
+                }
+                if (!isEmailValid)
+                    break;
+            }
 
             Console.WriteLine("Contact Updated Successfully!");
         }
@@ -105,6 +156,21 @@ namespace Address_Book_System
                 Console.WriteLine("-------------------------------");
                 Console.WriteLine(c);
             }
+        }
+        // uc 5 regex 
+        public bool EmailValid(string email)
+        {
+
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            
+
+            return Regex.IsMatch(email, emailPattern);
+        }
+
+        public bool MobileNumber(string Number)
+        {
+            string pattern = @"^[0-9]{10}$";
+            return Regex.IsMatch(Number, pattern);
         }
 
     }
