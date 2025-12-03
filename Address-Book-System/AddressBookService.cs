@@ -36,8 +36,31 @@ namespace Address_Book_System
             Console.Write("Enter State: ");
             c.State = Console.ReadLine();
 
-            Console.Write("Enter Zip: ");
-            c.Zip = Console.ReadLine();
+
+            while (true)
+            {
+                Console.Write("Enter Zip: ");
+                c.Zip = Console.ReadLine();
+
+                try
+                {
+                    if (c.Zip.Length != 6)
+                    {
+                        throw new InvalidZipException("Zip code must be exactly 6 digits long.");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                catch (InvalidZipException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+
+            }
+
+
 
             while (true)
             {
@@ -172,6 +195,29 @@ namespace Address_Book_System
             string pattern = @"^[0-9]{10}$";
             return Regex.IsMatch(Number, pattern);
         }
+
+
+// uc 7 : LINQ
+        public List<Contact> SortedBasedName()
+        {
+            return contacts.OrderBy(con => con.FirstName)
+                .ToList();
+        }
+
+        public List<Contact> NameStartWith(string first)
+        {
+            return contacts.Where(con => con.FirstName.StartsWith(first))
+                .ToList();
+        }
+
+        public List<Contact> FromSameState(string stateName)
+        {
+            return contacts.Where(con => con.State.Equals(stateName, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+        }
+
+
+
 
     }
 }
