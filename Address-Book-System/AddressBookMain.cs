@@ -22,7 +22,8 @@ namespace Address_Book_System
                 Console.WriteLine("4. Delete Contact");
                 Console.WriteLine("5. Show Contacts");
                 Console.WriteLine("6. WORK WITH DATA");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("7. ADD STATIC RECORDS");
+                Console.WriteLine("8. Exit");
                 Console.Write("Enter Choice: ");
 
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -104,7 +105,7 @@ namespace Address_Book_System
                             Console.WriteLine("3. Show Contacts FROM THE STATE");
                             Console.WriteLine("4. EXIT");
 
-                            int datachoice = Convert.ToInt32(Console.ReadLine());
+                            int datachoice = int.Parse(Console.ReadLine());
                             switch (datachoice)
                             {
                                 case 1:
@@ -145,7 +146,24 @@ namespace Address_Book_System
                             }
                         }
 
+                    
+
                     case 7:
+                        Console.Write("Enter Address Book Name: ");
+                        string book = Console.ReadLine();
+
+                        if (!addressBooks.ContainsKey(book))
+                        {
+                            Console.WriteLine("Address Book Not Found!");
+                            break;
+                        }
+
+                        AddressBookService addtoBook = addressBooks[book];
+
+                        addtoBook.AddMultipleContacts();
+                        break;
+
+                    case 8:
                         return;
 
                     default:
