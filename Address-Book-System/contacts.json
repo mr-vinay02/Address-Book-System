@@ -1,0 +1,109 @@
+{
+  "FirstName": "Vinay",
+  "LastName": "K",
+  "Address": "Street 1",
+  "City": "Bengaluru",
+  "State": "KA",
+  "Zip": "560001",
+  "PhoneNumber": "9876543210",
+  "Email": "vinay@example.com"
+}{
+  "FirstName": "Vijay",
+  "LastName": "P",
+  "Address": "Street 2",
+  "City": "Mysuru",
+  "State": "KA",
+  "Zip": "570001",
+  "PhoneNumber": "9876543211",
+  "Email": "vijay@example.com"
+}{
+  "FirstName": "Rahul",
+  "LastName": "R",
+  "Address": "Street 3",
+  "City": "Hubli",
+  "State": "KA",
+  "Zip": "580001",
+  "PhoneNumber": "9876543212",
+  "Email": "rahul@example.com"
+}{
+  "FirstName": "Kiran",
+  "LastName": "S",
+  "Address": "Street 4",
+  "City": "Tumkur",
+  "State": "KA",
+  "Zip": "572101",
+  "PhoneNumber": "9876543213",
+  "Email": "kiran@example.com"
+}{
+  "FirstName": "Ramesh",
+  "LastName": "M",
+  "Address": "Street 5",
+  "City": "Hassan",
+  "State": "KA",
+  "Zip": "573201",
+  "PhoneNumber": "9876543214",
+  "Email": "ramesh@example.com"
+}{
+  "FirstName": "Suresh",
+  "LastName": "T",
+  "Address": "Street 6",
+  "City": "Mangaluru",
+  "State": "KA",
+  "Zip": "575001",
+  "PhoneNumber": "9876543215",
+  "Email": "suresh@example.com"
+}{
+  "FirstName": "Deepak",
+  "LastName": "A",
+  "Address": "Street 7",
+  "City": "Udupi",
+  "State": "KA",
+  "Zip": "576101",
+  "PhoneNumber": "9876543216",
+  "Email": "deepak@example.com"
+}{
+  "FirstName": "Arjun",
+  "LastName": "V",
+  "Address": "Street 8",
+  "City": "Kolar",
+  "State": "KA",
+  "Zip": "563101",
+  "PhoneNumber": "9876543217",
+  "Email": "arjun@example.com"
+}{
+  "FirstName": "Shiva",
+  "LastName": "N",
+  "Address": "Street 9",
+  "City": "Belagavi",
+  "State": "KA",
+  "Zip": "590001",
+  "PhoneNumber": "9876543218",
+  "Email": "shiva@example.com"
+}{
+  "FirstName": "Manoj",
+  "LastName": "B",
+  "Address": "Street 10",
+  "City": "Davangere",
+  "State": "KA",
+  "Zip": "577001",
+  "PhoneNumber": "9876543219",
+  "Email": "manoj@example.com"
+}{
+  "FirstName": "sdxfghj",
+  "LastName": "dffghjk",
+  "Address": "\u0027dfghjkl",
+  "City": "\u0027dfghjk",
+  "State": "dfghjk",
+  "Zip": "454545",
+  "PhoneNumber": "1234567890",
+  "Email": "vinay@gmial.com"
+}{
+  "FirstName": "vinay",
+  "LastName": "basavaraj",
+  "Address": "avk road",
+  "City": "davangere",
+  "State": "karntaka",
+  "Zip": "577001",
+  "PhoneNumber": "9001224630",
+  "Email": "vinayvini4630@gmail.com"
+}
