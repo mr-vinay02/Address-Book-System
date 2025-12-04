@@ -32,47 +32,6 @@ namespace Address_Book_System
         };
 
 
-        public void AddMultipleContacts()
-        {
-            foreach (var contact in contactsToAdd)
-            {
-                contacts.Add(contact);
-                addToFile(contact);
-            }   
-        }
-
-        public static void addToFile(Contact contact)
-        {
-            try
-            {
-
-                // to store to json file formate
-                string filePathJson = "E:\\.Net programming\\Address-Book-System\\Address-Book-System\\contacts.json";
-
-                string jsonString = JsonSerializer.Serialize(contact, new JsonSerializerOptions { WriteIndented = true });
-
-                File.AppendAllText(filePathJson, jsonString);
-
-                string filePathCsv = "E:\\.Net programming\\Address-Book-System\\Address-Book-System\\contacts.csv";
-
-                using (StreamWriter writer = new StreamWriter(filePathCsv, append: true))
-                { 
-                    writer.WriteLine($"{contact.FirstName},{contact.LastName},{contact.Address},{contact.City},{contact.State},{contact.Zip},{contact.PhoneNumber},{contact.Email}");
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-        } 
-
-
-
-
-
-
         // UC2 – Add Contact
         public void AddContact()
         {
@@ -274,8 +233,44 @@ namespace Address_Book_System
             return contacts.Where(con => con.State.Equals(stateName, StringComparison.OrdinalIgnoreCase))
             .ToList();
         }
+        // uc 8 file handling
 
 
+        public void AddMultipleContacts()
+        {
+            foreach (var contact in contactsToAdd)
+            {
+                contacts.Add(contact);
+                addToFile(contact);
+            }
+        }
+
+        public static void addToFile(Contact contact)
+        {
+            try
+            {
+
+                // to store to json file formate
+                string filePathJson = "E:\\.Net programming\\Address-Book-System\\Address-Book-System\\contacts.json";
+
+                string jsonString = JsonSerializer.Serialize(contact, new JsonSerializerOptions { WriteIndented = true });
+
+                File.AppendAllText(filePathJson, jsonString);
+
+                string filePathCsv = "E:\\.Net programming\\Address-Book-System\\Address-Book-System\\contacts.csv";
+
+                using (StreamWriter writer = new StreamWriter(filePathCsv, append: true))
+                {
+                    writer.WriteLine($"{contact.FirstName},{contact.LastName},{contact.Address},{contact.City},{contact.State},{contact.Zip},{contact.PhoneNumber},{contact.Email}");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
 
 
     }
