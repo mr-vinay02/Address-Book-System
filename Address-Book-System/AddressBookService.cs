@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -13,8 +15,63 @@ namespace Address_Book_System
 
         private List<Contact> contacts = new List<Contact>();
 
-        
-        
+
+
+        private List<Contact> contactsToAdd = new List<Contact>()
+        {
+            new Contact { FirstName = "Vinay",  LastName = "K",     Address = "Street 1", City = "Bengaluru", State = "KA", Zip = "560001", PhoneNumber = "9876543210", Email = "vinay@example.com" },
+            new Contact { FirstName = "Vijay",  LastName = "P",     Address = "Street 2", City = "Mysuru",    State = "KA", Zip = "570001", PhoneNumber = "9876543211", Email = "vijay@example.com" },
+            new Contact { FirstName = "Rahul",  LastName = "R",     Address = "Street 3", City = "Hubli",     State = "KA", Zip = "580001", PhoneNumber = "9876543212", Email = "rahul@example.com" },
+            new Contact { FirstName = "Kiran",  LastName = "S",     Address = "Street 4", City = "Tumkur",    State = "KA", Zip = "572101", PhoneNumber = "9876543213", Email = "kiran@example.com" },
+            new Contact { FirstName = "Ramesh", LastName = "M",     Address = "Street 5", City = "Hassan",    State = "KA", Zip = "573201", PhoneNumber = "9876543214", Email = "ramesh@example.com" },
+            new Contact { FirstName = "Suresh", LastName = "T",     Address = "Street 6", City = "Mangaluru", State = "KA", Zip = "575001", PhoneNumber = "9876543215", Email = "suresh@example.com" },
+            new Contact { FirstName = "Deepak", LastName = "A",     Address = "Street 7", City = "Udupi",     State = "KA", Zip = "576101", PhoneNumber = "9876543216", Email = "deepak@example.com" },
+            new Contact { FirstName = "Arjun",  LastName = "V",     Address = "Street 8", City = "Kolar",     State = "KA", Zip = "563101", PhoneNumber = "9876543217", Email = "arjun@example.com" },
+            new Contact { FirstName = "Shiva",  LastName = "N",     Address = "Street 9", City = "Belagavi",  State = "KA", Zip = "590001", PhoneNumber = "9876543218", Email = "shiva@example.com" },
+            new Contact { FirstName = "Manoj",  LastName = "B",     Address = "Street 10",City = "Davangere", State = "KA", Zip = "577001", PhoneNumber = "9876543219", Email = "manoj@example.com" }
+        };
+
+
+        public void AddMultipleContacts()
+        {
+            foreach (var contact in contactsToAdd)
+            {
+                contacts.Add(contact);
+                addToFile(contact);
+            }   
+        }
+
+        public static void addToFile(Contact contact)
+        {
+            try
+            {
+
+                // to store to json file formate
+                string filePathJson = "E:\\.Net programming\\Address-Book-System\\Address-Book-System\\contacts.json";
+
+                string jsonString = JsonSerializer.Serialize(contact, new JsonSerializerOptions { WriteIndented = true });
+
+                File.AppendAllText(filePathJson, jsonString);
+
+                string filePathCsv = "E:\\.Net programming\\Address-Book-System\\Address-Book-System\\contacts.csv";
+
+                using (StreamWriter writer = new StreamWriter(filePathCsv, append: true))
+                { 
+                    writer.WriteLine($"{contact.FirstName},{contact.LastName},{contact.Address},{contact.City},{contact.State},{contact.Zip},{contact.PhoneNumber},{contact.Email}");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        } 
+
+
+
+
+
 
         // UC2 – Add Contact
         public void AddContact()
@@ -92,6 +149,8 @@ namespace Address_Book_System
             }
 
             contacts.Add(c);
+            addToFile(c);
+
             Console.WriteLine("Contact Added Successfully!");
         }
 
@@ -180,7 +239,7 @@ namespace Address_Book_System
                 Console.WriteLine(c);
             }
         }
-        // uc 5 regex 
+        // uc 6 regex 
         public bool EmailValid(string email)
         {
 
